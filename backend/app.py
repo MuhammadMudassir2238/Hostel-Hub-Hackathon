@@ -18,7 +18,6 @@ from models import (
 app = Flask(__name__)
 CORS(app)
 
-# Initialize database
 init_db()
 
 
@@ -37,8 +36,6 @@ def health():
         "status": "healthy"
     })
 
-
-# GET ALL HOSTELS
 @app.route("/api/hostels", methods=["GET"])
 def hostels():
 
@@ -50,8 +47,6 @@ def hostels():
         "hostels": data
     })
 
-
-# GET SINGLE HOSTEL
 @app.route("/api/hostels/<int:hostel_id>", methods=["GET"])
 def hostel_details(hostel_id):
 
@@ -135,9 +130,6 @@ def recommend():
         "preferences": preferences,
         "recommendations": recommendations
     })
-# ============================================================
-# BOOKING API
-# ============================================================
 
 @app.route("/api/bookings", methods=["POST"])
 def add_booking():
@@ -404,7 +396,6 @@ def update_availability(hostel_id):
     
 
 if __name__ == "__main__":
-    # app.run(debug=True, port=5000)
     app.run(
         host="127.0.0.1",
         port=5000,

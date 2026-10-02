@@ -61,10 +61,9 @@ function MyBookings() {
 
   return (
     <div className="my-bookings-page">
-      {/* Navbar */}
       <nav className="navbar">
         <div className="logo">
-          ChitralHostel
+          Hostel<span>Hub</span>
         </div>
 
         <div className="nav-actions">
@@ -85,7 +84,6 @@ function MyBookings() {
       </nav>
 
       <main className="my-bookings-container">
-        {/* Header */}
         <section className="my-bookings-header">
           <p className="hero-label">
             MY BOOKINGS
@@ -101,7 +99,6 @@ function MyBookings() {
           </p>
         </section>
 
-        {/* Search Card */}
         <section className="booking-search-card">
           <form
             onSubmit={searchBookings}
@@ -140,8 +137,6 @@ function MyBookings() {
             </div>
           )}
         </section>
-
-        {/* Loading */}
         {loading && (
           <div className="my-bookings-loading">
             <div className="loading-spinner"></div>
@@ -152,7 +147,6 @@ function MyBookings() {
           </div>
         )}
 
-        {/* Empty State */}
         {searched &&
           !loading &&
           !error &&
@@ -180,7 +174,6 @@ function MyBookings() {
             </div>
           )}
 
-        {/* Booking Results */}
         {!loading && bookings.length > 0 && (
           <section className="my-bookings-results">
             <div className="results-heading">
@@ -208,7 +201,6 @@ function MyBookings() {
                   className="my-booking-card"
                   key={booking.id}
                 >
-                  {/* Top */}
                   <div className="my-booking-top">
                     <div className="booking-hostel-info">
                       <span className="booking-id">
@@ -234,7 +226,6 @@ function MyBookings() {
                     </span>
                   </div>
 
-                  {/* Details */}
                   <div className="my-booking-details">
                     <div className="booking-detail-item">
                       <span>

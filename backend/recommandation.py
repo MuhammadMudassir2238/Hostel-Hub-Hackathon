@@ -3,16 +3,10 @@ import joblib
 import pandas as pd
 
 
-# ============================================================
-# MODEL CONFIGURATION
-# ============================================================
 
 MODEL_FILE = "hostel_recommender.pkl"
 
 
-# ============================================================
-# LOAD TRAINED MODEL
-# ============================================================
 
 _model_package = None
 
@@ -36,18 +30,11 @@ def load_model():
     return _model_package
 
 
-# ============================================================
-# TEXT NORMALIZATION
-# ============================================================
-
 def normalize_text(value):
 
     return str(value).strip().lower()
 
 
-# ============================================================
-# FACILITY MATCH
-# ============================================================
 
 def facility_match(
     hostel_facilities,
@@ -67,9 +54,6 @@ def facility_match(
     )
 
 
-# ============================================================
-# BUDGET SCORE
-# ============================================================
 
 def calculate_budget_score(
     hostel_rent,
@@ -95,10 +79,6 @@ def calculate_budget_score(
         min(100, score)
     )
 
-
-# ============================================================
-# LOCATION SCORE
-# ============================================================
 
 def calculate_location_score(
     hostel_location,
@@ -139,9 +119,6 @@ def calculate_location_score(
     return 30
 
 
-# ============================================================
-# ROOM TYPE SCORE
-# ============================================================
 
 def calculate_room_score(
     hostel_room_type,
@@ -165,9 +142,6 @@ def calculate_room_score(
     return 0
 
 
-# ============================================================
-# FACILITY SCORE
-# ============================================================
 
 def calculate_facility_score(
     hostel,
@@ -194,9 +168,6 @@ def calculate_facility_score(
     ) * 100
 
 
-# ============================================================
-# AVAILABILITY SCORE
-# ============================================================
 
 def calculate_availability_score(
     available_rooms
@@ -213,10 +184,6 @@ def calculate_availability_score(
 
     return 100
 
-
-# ============================================================
-# BUILD ML FEATURES
-# ============================================================
 
 def build_features(
     hostel,
@@ -246,9 +213,6 @@ def build_features(
         []
     )
 
-    # --------------------------------------------------------
-    # Individual scores
-    # --------------------------------------------------------
 
     budget_score = calculate_budget_score(
         hostel_rent,
@@ -276,9 +240,6 @@ def build_features(
         )
     )
 
-    # --------------------------------------------------------
-    # Additional features
-    # --------------------------------------------------------
 
     rent_difference = abs(
         hostel_rent -
@@ -292,9 +253,6 @@ def build_features(
         else 1
     )
 
-    # --------------------------------------------------------
-    # Required facilities
-    # --------------------------------------------------------
 
     wifi_required = int(
         "WiFi" in required_facilities
@@ -313,9 +271,6 @@ def build_features(
         in required_facilities
     )
 
-    # --------------------------------------------------------
-    # Hostel facilities
-    # --------------------------------------------------------
 
     hostel_has_wifi = int(
         facility_match(
@@ -345,9 +300,6 @@ def build_features(
         )
     )
 
-    # --------------------------------------------------------
-    # Return exact feature order
-    # --------------------------------------------------------
 
     return [
         user_budget,
@@ -370,10 +322,6 @@ def build_features(
     ]
 
 
-# ============================================================
-# RECOMMENDATION LEVEL
-# ============================================================
-
 def get_recommendation_level(score):
 
     if score >= 85:
@@ -387,10 +335,6 @@ def get_recommendation_level(score):
 
     return "Low Match"
 
-
-# ============================================================
-# GENERATE EXPLANATION
-# ============================================================
 
 def generate_explanation(
     hostel,
@@ -465,10 +409,6 @@ def generate_explanation(
     return explanations
 
 
-# ============================================================
-# MAIN ML RECOMMENDATION FUNCTION
-# ============================================================
-
 def recommend_hostels(
     hostels,
     preferences
@@ -497,16 +437,8 @@ def recommend_hostels(
             feature_dataframe
         )[0]
 
-        # ----------------------------------------------------
-        # Hard availability rule
-        # ----------------------------------------------------
-
         if hostel["available_rooms"] <= 0:
             ml_score *= 0.5
-
-        # ----------------------------------------------------
-        # Calculate explanation scores
-        # ----------------------------------------------------
 
         budget_score = calculate_budget_score(
             hostel["rent"],
@@ -597,9 +529,6 @@ def recommend_hostels(
             result
         )
 
-    # --------------------------------------------------------
-    # Sort by ML prediction
-    # --------------------------------------------------------
 
     results.sort(
         key=lambda item:
@@ -607,9 +536,6 @@ def recommend_hostels(
         reverse=True
     )
 
-    # --------------------------------------------------------
-    # Add ranking
-    # --------------------------------------------------------
 
     for index, result in enumerate(
         results,

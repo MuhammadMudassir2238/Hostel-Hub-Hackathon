@@ -24,10 +24,6 @@ function ManageListings() {
     owner_phone: "",
   });
 
-  // ==========================================
-  // LOAD HOSTELS
-  // ==========================================
-
   const loadHostels = async () => {
     try {
       setLoading(true);
@@ -54,10 +50,6 @@ function ManageListings() {
     loadHostels();
   }, []);
 
-  // ==========================================
-  // START EDITING
-  // ==========================================
-
   const startEditing = (hostel) => {
     setEditingId(hostel.id);
 
@@ -77,9 +69,6 @@ function ManageListings() {
     setError("");
   };
 
-  // ==========================================
-  // FORM CHANGE
-  // ==========================================
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -89,10 +78,6 @@ function ManageListings() {
       [name]: value,
     }));
   };
-
-  // ==========================================
-  // UPDATE HOSTEL
-  // ==========================================
 
   const handleUpdate = async (event) => {
     event.preventDefault();
@@ -143,9 +128,6 @@ function ManageListings() {
     }
   };
 
-  // ==========================================
-  // CANCEL EDITING
-  // ==========================================
 
   const cancelEditing = () => {
     setEditingId(null);
@@ -165,16 +147,10 @@ function ManageListings() {
     setError("");
   };
 
-  // ==========================================
-  // UI
-  // ==========================================
 
   return (
     <div className="manage-listings-page">
 
-      {/* ======================================
-          NAVBAR
-      ====================================== */}
 
       <nav className="listings-navbar">
 
@@ -211,15 +187,7 @@ function ManageListings() {
 
       </nav>
 
-      {/* ======================================
-          MAIN
-      ====================================== */}
-
       <main className="listings-container">
-
-        {/* ====================================
-            HEADER
-        ==================================== */}
 
         <div className="listings-header">
 
@@ -251,19 +219,11 @@ function ManageListings() {
 
         </div>
 
-        {/* ====================================
-            SUCCESS
-        ==================================== */}
-
         {success && (
           <div className="listing-success">
             ✓ {success}
           </div>
         )}
-
-        {/* ====================================
-            ERROR
-        ==================================== */}
 
         {error && (
           <div className="listing-error">
@@ -271,9 +231,6 @@ function ManageListings() {
           </div>
         )}
 
-        {/* ====================================
-            LOADING
-        ==================================== */}
 
         {loading && (
           <div className="listings-loading">
@@ -287,9 +244,6 @@ function ManageListings() {
           </div>
         )}
 
-        {/* ====================================
-            EMPTY
-        ==================================== */}
 
         {!loading && hostels.length === 0 && (
           <div className="listings-empty">
@@ -309,9 +263,6 @@ function ManageListings() {
           </div>
         )}
 
-        {/* ====================================
-            HOSTEL GRID
-        ==================================== */}
 
         {!loading && hostels.length > 0 && (
           <div className="listings-grid">
@@ -322,7 +273,7 @@ function ManageListings() {
                 key={hostel.id}
               >
 
-                {/* CARD TOP */}
+            
 
                 <div className="listing-card-top">
 
@@ -336,7 +287,6 @@ function ManageListings() {
 
                 </div>
 
-                {/* TITLE */}
 
                 <div className="listing-title-section">
 
@@ -350,7 +300,6 @@ function ManageListings() {
 
                 </div>
 
-                {/* MAIN INFO */}
 
                 <div className="listing-main-info">
 
@@ -380,7 +329,6 @@ function ManageListings() {
 
                 </div>
 
-                {/* AVAILABILITY */}
 
                 <div className="listing-availability">
 
@@ -410,7 +358,6 @@ function ManageListings() {
 
                 </div>
 
-                {/* FACILITIES */}
 
                 <div className="listing-facilities">
 
@@ -435,7 +382,6 @@ function ManageListings() {
 
                 </div>
 
-                {/* OWNER */}
 
                 <div className="listing-owner">
 
@@ -455,7 +401,6 @@ function ManageListings() {
 
                 </div>
 
-                {/* ACTIONS */}
 
                 <div className="listing-actions">
 
@@ -489,9 +434,6 @@ function ManageListings() {
 
       </main>
 
-      {/* ======================================
-          EDIT MODAL
-      ====================================== */}
 
       {editingId !== null && (
         <div
@@ -505,8 +447,6 @@ function ManageListings() {
               event.stopPropagation()
             }
           >
-
-            {/* MODAL HEADER */}
 
             <div className="edit-modal-header">
 
@@ -531,11 +471,10 @@ function ManageListings() {
 
             </div>
 
-            {/* FORM */}
+
 
             <form onSubmit={handleUpdate}>
 
-              {/* BASIC INFORMATION */}
 
               <div className="modal-form-section">
 
@@ -649,7 +588,6 @@ function ManageListings() {
 
               </div>
 
-              {/* FACILITIES */}
 
               <div className="modal-form-section">
 
@@ -680,7 +618,6 @@ function ManageListings() {
 
               </div>
 
-              {/* DESCRIPTION */}
 
               <div className="modal-form-section">
 
@@ -706,7 +643,6 @@ function ManageListings() {
 
               </div>
 
-              {/* OWNER */}
 
               <div className="modal-form-section">
 
@@ -750,7 +686,6 @@ function ManageListings() {
 
               </div>
 
-              {/* MODAL ACTIONS */}
 
               <div className="edit-modal-actions">
 

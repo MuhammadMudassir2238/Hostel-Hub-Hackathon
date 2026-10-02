@@ -3,8 +3,6 @@ import { Link } from "react-router-dom";
 function Home() {
   return (
     <div className="home-page">
-
-      {/* Navbar */}
       <nav className="navbar">
         <div className="navbar-container">
 
@@ -22,8 +20,6 @@ function Home() {
 
         </div>
       </nav>
-
-      {/* Hero */}
       <section className="hero-section">
 
         <div className="hero-content">
@@ -88,8 +84,6 @@ function Home() {
         </div>
 
       </section>
-
-      {/* Features */}
       <section className="features-section">
 
         <div className="section-header">
@@ -161,8 +155,6 @@ function Home() {
         </div>
 
       </section>
-
-      {/* How It Works */}
       <section className="how-section">
 
         <div className="section-header">
@@ -225,8 +217,6 @@ function Home() {
         </div>
 
       </section>
-
-      {/* CTA */}
       <section className="cta-section">
 
         <div>
@@ -250,8 +240,6 @@ function Home() {
         </Link>
 
       </section>
-
-      {/* Footer */}
       <footer className="footer">
 
         <div>

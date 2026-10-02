@@ -139,7 +139,6 @@ function Search() {
 
       </section>
 
-      {/* Search Form */}
       <main className="search-container">
 
         <form
@@ -147,7 +146,6 @@ function Search() {
           onSubmit={handleSubmit}
         >
 
-          {/* Location */}
           <div className="form-section">
 
             <div className="form-section-heading">
@@ -189,8 +187,6 @@ function Search() {
             </select>
 
           </div>
-
-          {/* Budget */}
           <div className="form-section">
 
             <div className="form-section-heading">
@@ -228,7 +224,6 @@ function Search() {
 
           </div>
 
-          {/* Room Type */}
           <div className="form-section">
 
             <div className="form-section-heading">
@@ -306,7 +301,6 @@ function Search() {
 
           </div>
 
-          {/* Facilities */}
           <div className="form-section">
 
             <div className="form-section-heading">
@@ -372,7 +366,6 @@ function Search() {
             </div>
           )}
 
-          {/* Submit */}
           <div className="search-submit">
 
             <div>

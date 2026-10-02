@@ -53,11 +53,6 @@ def init_db():
     conn.commit()
     conn.close()
 
-
-# ============================================================
-# HOSTEL FUNCTIONS
-# ============================================================
-
 def get_all_hostels():
     conn = get_db_connection()
 
@@ -129,10 +124,6 @@ def create_hostel(data):
 
     return hostel_id
 
-
-# ============================================================
-# BOOKING FUNCTIONS
-# ============================================================
 
 def create_booking(data):
 

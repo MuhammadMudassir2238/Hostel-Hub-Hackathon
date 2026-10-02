@@ -110,7 +110,6 @@ function HostelDetails() {
   return (
     <div className="details-page">
 
-      {/* Navbar */}
       <nav className="navbar">
         <div className="navbar-container">
 
@@ -136,7 +135,6 @@ function HostelDetails() {
         </div>
       </nav>
 
-      {/* Breadcrumb */}
       <div className="details-breadcrumb">
         <div>
           <Link to="/">
@@ -157,10 +155,8 @@ function HostelDetails() {
         </div>
       </div>
 
-      {/* Main */}
       <main className="details-container">
 
-        {/* Hero */}
         <section className="details-hero">
 
           <div className="details-hero-content">
@@ -201,8 +197,6 @@ function HostelDetails() {
           </div>
 
         </section>
-
-        {/* Quick Info */}
         <section className="quick-info-grid">
 
           <div className="quick-info-card">
@@ -278,14 +272,8 @@ function HostelDetails() {
           </div>
 
         </section>
-
-        {/* Two columns */}
         <div className="details-layout">
-
-          {/* Left */}
           <div className="details-main-column">
-
-            {/* Facilities */}
             <section className="details-card">
 
               <div className="details-card-heading">
@@ -328,8 +316,6 @@ function HostelDetails() {
               )}
 
             </section>
-
-            {/* Description */}
             <section className="details-card">
 
               <div className="details-card-heading">
@@ -352,8 +338,6 @@ function HostelDetails() {
               </p>
 
             </section>
-
-            {/* Map */}
             <section className="details-card">
 
               <div className="details-card-heading">
@@ -426,10 +410,10 @@ function HostelDetails() {
 
           </div>
 
-          {/* Right */}
+
           <aside className="details-sidebar">
 
-            {/* Booking */}
+
             <div className="booking-card">
 
               <span className="booking-label">
@@ -488,7 +472,6 @@ function HostelDetails() {
 
             </div>
 
-            {/* Owner */}
             <div className="owner-card">
 
               <span className="owner-label">

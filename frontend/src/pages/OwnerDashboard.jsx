@@ -9,9 +9,6 @@ function OwnerDashboard() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
-  // ==========================================
-  // LOAD ALL BOOKINGS
-  // ==========================================
 
   const loadBookings = async () => {
     try {
@@ -32,25 +29,15 @@ function OwnerDashboard() {
     }
   };
 
-  // ==========================================
-  // LOAD DATA WHEN PAGE OPENS
-  // ==========================================
 
   useEffect(() => {
     loadBookings();
   }, []);
 
-  // ==========================================
-  // REFRESH DASHBOARD
-  // ==========================================
 
   const refreshDashboard = () => {
     loadBookings();
   };
-
-  // ==========================================
-  // UPDATE BOOKING STATUS
-  // ==========================================
 
   const updateStatus = async (bookingId, status) => {
     try {
@@ -80,9 +67,7 @@ function OwnerDashboard() {
     }
   };
 
-  // ==========================================
-  // STATUS CSS CLASS
-  // ==========================================
+
 
   const getStatusClass = (status) => {
     if (status === "Accepted") {
@@ -96,9 +81,7 @@ function OwnerDashboard() {
     return "status-pending";
   };
 
-  // ==========================================
-  // DASHBOARD STATISTICS
-  // ==========================================
+
 
   const totalBookings = bookings.length;
 
@@ -114,15 +97,11 @@ function OwnerDashboard() {
     (booking) => booking.status === "Rejected",
   ).length;
 
-  // ==========================================
-  // UI
-  // ==========================================
+
 
   return (
     <div className="owner-dashboard-page">
-      {/* =====================================
-          NAVBAR
-      ===================================== */}
+
 
       <nav className="dashboard-navbar">
         <div className="dashboard-logo" onClick={() => navigate("/")}>
@@ -140,14 +119,10 @@ function OwnerDashboard() {
         </div>
       </nav>
 
-      {/* =====================================
-          MAIN CONTENT
-      ===================================== */}
+
 
       <main className="dashboard-container">
-        {/* ===================================
-            HEADER
-        =================================== */}
+
 
         <div className="dashboard-header">
           <div>
@@ -172,15 +147,7 @@ function OwnerDashboard() {
           </div>
         </div>
 
-        {/* ===================================
-            ERROR MESSAGE
-        =================================== */}
-
         {error && <div className="dashboard-error">{error}</div>}
-
-        {/* ===================================
-            STATISTICS
-        =================================== */}
 
         <section className="dashboard-stats">
           <div className="stat-card">
@@ -224,9 +191,6 @@ function OwnerDashboard() {
           </div>
         </section>
 
-        {/* ===================================
-            BOOKING REQUESTS
-        =================================== */}
 
         <section className="dashboard-section">
           <div className="section-heading">
@@ -242,9 +206,7 @@ function OwnerDashboard() {
             </div>
           </div>
 
-          {/* =================================
-              LOADING
-          ================================= */}
+
 
           {loading && (
             <div className="dashboard-loading">
@@ -254,9 +216,7 @@ function OwnerDashboard() {
             </div>
           )}
 
-          {/* =================================
-              EMPTY STATE
-          ================================= */}
+
 
           {!loading && bookings.length === 0 && (
             <div className="dashboard-empty">
@@ -268,17 +228,12 @@ function OwnerDashboard() {
             </div>
           )}
 
-          {/* =================================
-              BOOKING LIST
-          ================================= */}
+
 
           {!loading && bookings.length > 0 && (
             <div className="booking-request-list">
               {bookings.map((booking) => (
                 <div className="booking-request-card" key={booking.id}>
-                  {/* =========================
-                      CARD HEADER
-                  ========================= */}
 
                   <div className="booking-card-header">
                     <div>
@@ -300,9 +255,6 @@ function OwnerDashboard() {
                     </span>
                   </div>
 
-                  {/* =========================
-                      BOOKING INFORMATION
-                  ========================= */}
 
                   <div className="booking-information">
                     <div className="booking-info-item">

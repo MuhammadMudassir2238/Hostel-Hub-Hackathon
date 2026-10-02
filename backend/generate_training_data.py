@@ -3,9 +3,6 @@ import random
 from models import init_db, get_all_hostels
 
 
-# ============================================================
-# CONFIGURATION
-# ============================================================
 
 OUTPUT_FILE = "training_data.csv"
 
@@ -25,7 +22,6 @@ LOCATIONS = [
 ROOM_TYPES = [
     "Shared",
     "Single",
-    "Double",
 ]
 
 FACILITIES = [
@@ -35,10 +31,6 @@ FACILITIES = [
     "Attached Bathroom",
 ]
 
-
-# ============================================================
-# HELPER FUNCTIONS
-# ============================================================
 
 def normalize_text(value):
     return str(value).strip().lower()
@@ -159,15 +151,8 @@ def calculate_availability_score(
     return 100
 
 
-# ============================================================
-# GENERATE ONE USER-HOSTEL SAMPLE
-# ============================================================
 
 def generate_sample(hostel):
-
-    # --------------------------------------------------------
-    # Generate user preferences
-    # --------------------------------------------------------
 
     user_budget = random.randint(
         5000,
@@ -186,10 +171,6 @@ def generate_sample(hostel):
         FACILITIES,
         random.randint(0, 4)
     )
-
-    # --------------------------------------------------------
-    # Calculate individual feature scores
-    # --------------------------------------------------------
 
     budget_score = calculate_budget_score(
         hostel["rent"],
@@ -215,10 +196,6 @@ def generate_sample(hostel):
         hostel["available_rooms"]
     )
 
-    # --------------------------------------------------------
-    # Additional numerical features
-    # --------------------------------------------------------
-
     rent_difference = abs(
         hostel["rent"] -
         user_budget
@@ -231,11 +208,6 @@ def generate_sample(hostel):
         else 1
     )
 
-    # --------------------------------------------------------
-    # Generate target score
-    #
-    # This is used to create training labels.
-    # --------------------------------------------------------
 
     target_score = (
         budget_score * 0.30
@@ -248,14 +220,6 @@ def generate_sample(hostel):
         +
         availability_score * 0.15
     )
-
-    # --------------------------------------------------------
-    # Add small controlled noise
-    #
-    # This prevents every sample from following
-    # exactly the same mathematical equation.
-    # --------------------------------------------------------
-
     noise = random.uniform(
         -3,
         3
@@ -268,9 +232,6 @@ def generate_sample(hostel):
         min(100, target_score)
     )
 
-    # --------------------------------------------------------
-    # Return ML training row
-    # --------------------------------------------------------
 
     return {
         "user_budget": user_budget,
@@ -368,9 +329,6 @@ def generate_sample(hostel):
     }
 
 
-# ============================================================
-# MAIN DATA GENERATION
-# ============================================================
 
 def main():
 
@@ -405,9 +363,6 @@ def main():
 
     training_rows = []
 
-    # --------------------------------------------------------
-    # Generate samples
-    # --------------------------------------------------------
 
     for _ in range(NUM_SAMPLES):
 
@@ -423,9 +378,6 @@ def main():
             sample
         )
 
-    # --------------------------------------------------------
-    # CSV columns
-    # --------------------------------------------------------
 
     fieldnames = [
         "user_budget",
@@ -448,10 +400,6 @@ def main():
         "target_score",
     ]
 
-    # --------------------------------------------------------
-    # Write CSV
-    # --------------------------------------------------------
-
     with open(
         OUTPUT_FILE,
         "w",
@@ -469,10 +417,6 @@ def main():
         writer.writerows(
             training_rows
         )
-
-    # --------------------------------------------------------
-    # Dataset summary
-    # --------------------------------------------------------
 
     scores = [
         row["target_score"]

@@ -1,5 +1,4 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
 import Home from "./pages/home";
 import Search from "./pages/Search";
 import Results from "./pages/Results";
@@ -7,7 +6,7 @@ import HostelDetails from "./pages/hostelDetails";
 import Booking from "./pages/Booking";
 import OwnerDashboard from "./pages/OwnerDashboard";
 import MyBookings from "./pages/MyBookings";
-import ManageListings from "./pages/Managelistings";
+import ManageListings from "./pages/ManageListings";
 
 function App() {
   return (
